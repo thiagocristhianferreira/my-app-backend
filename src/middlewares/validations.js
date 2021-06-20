@@ -33,7 +33,7 @@ const emailValidation = (req, res, next) => {
     }
     if (!validationEmail.test(email)) {
       return res.status(HTTP_BAD_REQUEST_STATUS)
-        .json({ message: 'O "email" deve ter o formato "email@email.com"' });
+        .json({ message: 'O "email" deve ter o formato "email@exemplo.com"' });
     }
   next();
 };
