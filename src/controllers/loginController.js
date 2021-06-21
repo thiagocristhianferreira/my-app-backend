@@ -13,9 +13,12 @@ const makeLogin = async (req, res) => {
     const { email, pass } = req.body;
     const result = await jwtGenerate(email, pass);
     if (result.status === 401) return result;
+    
+    const { token } = result;
 
     return res.status(OK).json({
       message: 'Login efetuado com sucesso',
+      token,
     });
   } catch (error) {
     console.error(error);
