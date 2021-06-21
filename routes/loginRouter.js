@@ -2,11 +2,11 @@ const express = require('express');
 
 const { loginController } = require('../src/controllers');
 const {
-  loginReader,
+  makeLogin,
 } = loginController;
 
 const login = express.Router();
 
-login.get('/', loginReader);
+login.post('/', makeLogin);
 
 module.exports = login;

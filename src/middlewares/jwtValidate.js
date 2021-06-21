@@ -8,9 +8,7 @@ const jwtConfig = {
 };
 
 // const jwtValidate = async (email, password) => {
-//   if (!email || !password) return (
-//     { status: 401, message: 'É necessário usuário e senha para efetuar o login' }
-//   );
+
 
 //   const userSearch = await findUser(email);
 
@@ -26,14 +24,20 @@ const jwtConfig = {
 // };
 
 const jwtValidate = async (req, res, next) => {
-  const token = req.headers.authorization;
-  if (!token) return res.status(401).json({ error: 'Token não informado' });
+  // const token = req.headers.authorization;
+  const { email, password } = req.body;
 
+  if (!email || !password) return (
+    { status: 401, message: 'É necessário usuário e senha para efetuar o login' }
+  );
+
+  if (!token) return res.status(401).json({ error: 'Token não informado' });
   try {
     const decode = jwt.verify()
   } catch (error) {
     return res.status(401).json({ error: 'Erro ao procurar usuário' });
   }
+  next();
 };
 
 module.exports = jwtValidate;

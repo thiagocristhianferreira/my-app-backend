@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const { joinModel } = require('../models');
 const {
   searchUser,
@@ -10,7 +12,11 @@ const findUser = async (email) => {
 };
 
 const registerUser = async (email, pass) => {
-  await addUser(email, pass);
+  const salt = bcrypt.genSaltSync(10);
+  
+  const encryptedPass = bcrypt.hashSync(pass, salt)
+  
+  await addUser(email, encryptedPass);
   return email;
 };
 

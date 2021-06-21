@@ -14,8 +14,9 @@ app.use(bodyParser.json());
 const PORT = process.env.PORT;
 
 app.use(loginRouter);
-
 app.use(joinRouter);
+
+
 
 app.listen(PORT, () => {
   console.log(`Rodando na porta ${ PORT }`);
