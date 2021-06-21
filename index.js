@@ -13,6 +13,14 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT;
 
+app.get('/', (req, res) => {
+  try {
+    return res.status(200).json({ message: 'server online' });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+});
+
 app.use(loginRouter);
 app.use(joinRouter);
 
