@@ -7,6 +7,6 @@ const {
 
 const join = express.Router();
 
-join.get('/', userCreate);
+join.post('/', userCreate);
 
 module.exports = join;

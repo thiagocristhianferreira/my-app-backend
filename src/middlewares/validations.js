@@ -1,5 +1,6 @@
 const HTTP_UNAUTHORIZED_STATUS = 401;
 const HTTP_BAD_REQUEST_STATUS = 400;
+const PASS_MIN = 6;
 
 const tokenVerification = (req, res, next) => {
   const { authorization } = req.headers;
@@ -38,8 +39,21 @@ const emailValidation = (req, res, next) => {
   next();
 };
 
+const passworValidation = (req, res, next) => {
+  const { password } = req.body;
+    if (!password) {
+      return res.status(HTTP_BAD_REQUEST_STATUS).json({ message: 'O campo "password" é obrigatório' });
+    }
+    if (password > PASS_MIN) {
+      return res.status(HTTP_BAD_REQUEST_STATUS)
+        .json({ message: 'A senha deve ter mais que 6 caracteres' });
+    }
+  next();
+};
+
 module.exports = {
   tokenVerification,
   nameVerification,
   emailValidation,
+  passworValidation,
 };

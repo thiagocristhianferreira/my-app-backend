@@ -1,13 +1,25 @@
-const connection = require("../../connection");
+const { joinServices } = require('../services');
+const {
+  findUser,
+  registerUser,
+} = joinServices;
+
 
 const OK = 200;
 const CREATED = 201;
 const NOT_FOUND = 404;
 const UNPROCESSABLE = 422;
 
-const userCreate = async (_req, res) => {
+const userCreate = async (req, res) => {
   try {
-    return res.status(OK).json({ message: 'result'});
+    const { email, pass } = req.body;
+    
+    const userSearch = await findUser(email);
+    if (userSearch) return res.status(NOT_FOUND).json({ message: 'Usuário já cadastrado' })
+
+    await registerUser(email, pass);
+
+    return res.status(OK).json({ message: 'Usuário cadastrado com sucesso'});
   } catch (error) {
     console.error(error);
     return res.status(NOT_FOUND).json({ message: error.message });

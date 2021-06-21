@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT;
 
-// app.use(loginRouter);
+app.use(loginRouter);
 
 app.use(joinRouter);
 
