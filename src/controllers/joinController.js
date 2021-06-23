@@ -6,23 +6,21 @@ const {
 
 
 const OK = 200;
-const CREATED = 201;
-const NOT_FOUND = 404;
-const UNPROCESSABLE = 422;
+const NOT_ALLOWED = 405;
 
 const userCreate = async (req, res) => {
   try {
     const { email, pass } = req.body;
     
     const userSearch = await findUser(email);
-    if (userSearch) return res.status(NOT_FOUND).json({ message: 'Usuário já cadastrado' })
+    if (userSearch) return res.status(NOT_ALLOWED).json({ message: 'Usuário já cadastrado' })
 
     await registerUser(email, pass);
 
     return res.status(OK).json({ message: 'Usuário cadastrado com sucesso'});
   } catch (error) {
     console.error(error);
-    return res.status(NOT_FOUND).json({ message: error.message });
+    return res.status(NOT_ALLOWED).json({ message: error.message });
   }
 };
 

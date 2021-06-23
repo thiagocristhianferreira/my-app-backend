@@ -7,13 +7,6 @@ const jwtConfig = {
   algorithm: 'HS256'
 };
 
-// const jwtValidate = async (email, password) => {
-  
-  
-    
-    //   return ({ status: 200, message: token });
-    // };
-    
 const jwtValidate = async (req, res, next) => {
   if (!email || !password) return (
     { status: 401, message: 'É necessário usuário e senha para efetuar o login' }
