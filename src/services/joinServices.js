@@ -14,7 +14,7 @@ const findUser = async (email) => {
 const registerUser = async (email, pass) => {
   const salt = bcrypt.genSaltSync(10);
   
-  const encryptedPass = bcrypt.hashSync(pass, salt)
+  const encryptedPass = bcrypt.hashSync(pass, salt);
   
   await addUser(email, encryptedPass);
   return email;
