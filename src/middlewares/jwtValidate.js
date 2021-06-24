@@ -9,7 +9,6 @@ const jwtConfig = {
 
 // const jwtValidate = async (email, password) => {
 
-
 //   const userSearch = await findUser(email);
 
 //   if (!userSearch || !userSearch.password !== password) return (
@@ -22,10 +21,6 @@ const jwtConfig = {
 
 //   return ({ status: 200, message: token });
 // };
-
-// Criamos um novo objeto de Headers
-// const headers = new fetch.Headers({
-  // Authorization: API_TOKEN});
 
 
 const jwtValidate = async (req, res, next) => {

@@ -6,6 +6,7 @@ require('dotenv').config();
 const {
   loginRouter,
   joinRouter,
+  verifyRouter,
 } = require('./routes');
 
 const app = express();
@@ -23,9 +24,10 @@ app.get('/', (req, res) => {
 });
 
 app.use(loginRouter);
+
 app.use(joinRouter);
 
-
+app.use(verifyRouter)
 
 
 app.listen(PORT, () => {
