@@ -1,17 +1,17 @@
-// const { joinModel } = require('../models');
-// const {
-//   searchUser,
-//   addUser,
-// } = joinModel;
+const jwt = require('jsonwebtoken');
 
-const verifyJwt = async (token) => {
-  const decoded = jwt.verify(token, secret);
+const {
+  favoritesCharactersModel: { writeFavoritesCharacters }
+} = require('../models');
 
-  const user = decoded.data.email;
+const secret = process.env.JWT_SECRET;
 
-  return ({ message: 'Login válido' });
+const addFavoritesCharacters = async (authorization, favoritesCharactersArray) => {
+  const { data: { email } } = jwt.verify(authorization, secret);
+
+  return await writeFavoritesCharacters(email, favoritesCharactersArray);
 };
 
 module.exports = {
-  verifyJwt,
+  addFavoritesCharacters,
 };

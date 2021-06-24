@@ -1,7 +1,7 @@
 const loginRouter = require('./loginRouter');
 const joinRouter = require('./joinRouter');
 const verifyRouter = require('./verifyRouter');
-const favoritesCharactersRouter = require('./favoritesComicsRouter');
+const favoritesCharactersRouter = require('./favoritesCharactersRouter');
 const favoritesComicsRouter = require('./favoritesComicsRouter');
 
 module.exports = {

@@ -2,12 +2,12 @@ const connection = require('../../connection');
 
 const NAME_COLLECTION = 'users';
 
-const addUser = async (email, password) => {
+const writeFavoritesCharacters = async (email, favoritesCharactersArray) => {
   try {
     const db = await connection();
-    return await db
+    await db
       .collection(NAME_COLLECTION)
-      .insertOne({ email, password });
+      .updateOne({ email }, { $set: { favoritesCharacters: favoritesCharactersArray } });
   } catch (error) {
     console.log(error.message);
     return null;
@@ -15,5 +15,5 @@ const addUser = async (email, password) => {
 };
 
 module.exports = {
-  addUser,
+  writeFavoritesCharacters,
 };

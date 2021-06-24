@@ -1,9 +1,9 @@
 const express = require('express');
 
-const { favoritesCharactersController } = require('../src/controllers');
+const { favoritesCharactersControllers } = require('../src/controllers');
 const {
   favoritesCharactersCreate,
-} = favoritesCharactersController;
+} = favoritesCharactersControllers;
 
 const favoritesCharacters = express.Router();
 
