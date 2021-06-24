@@ -27,7 +27,7 @@ const jwtGenerate = async (email, password) => {
     { status: 401, message: 'O usuário não existe ou senha inválida' }
   );
 
-  const { password: passBD, otherInfo } = userSearch;
+  const { password: passBD, ...otherInfo } = userSearch;
 
   const token = jwt.sign({ data: otherInfo }, secret, jwtConfig);
 

@@ -23,8 +23,13 @@ const jwtConfig = {
 //   return ({ status: 200, message: token });
 // };
 
+// Criamos um novo objeto de Headers
+// const headers = new fetch.Headers({
+  // Authorization: API_TOKEN});
+
+
 const jwtValidate = async (req, res, next) => {
-  // const token = req.headers.authorization;
+  const token = req.headers.authorization;
   const { email, password } = req.body;
 
   if (!email || !password) return (

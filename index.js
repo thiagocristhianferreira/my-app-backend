@@ -27,6 +27,7 @@ app.use(joinRouter);
 
 
 
+
 app.listen(PORT, () => {
   console.log(`Rodando na porta ${ PORT }`);
 });
