@@ -7,6 +7,8 @@ const {
   loginRouter,
   joinRouter,
   verifyRouter,
+  favoritesCharactersRouter,
+  favoritesComicsRouter,
 } = require('./routes');
 
 const app = express();
@@ -27,8 +29,11 @@ app.use(loginRouter);
 
 app.use(joinRouter);
 
-app.use(verifyRouter)
+app.use(verifyRouter);
 
+app.use(favoritesCharactersRouter);
+
+app.use(favoritesComicsRouter);
 
 app.listen(PORT, () => {
   console.log(`Rodando na porta ${ PORT }`);
