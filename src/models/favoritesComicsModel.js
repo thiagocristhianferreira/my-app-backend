@@ -14,6 +14,19 @@ const writeFavoritesComics = async (email, favoritesComicsArray) => {
   }
 };
 
+const readFavoritesComics = async (email) => {
+  try {
+    const db = await connection();
+    return db
+      .collection(NAME_COLLECTION)
+      .findOne({ email });
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
 module.exports = {
   writeFavoritesComics,
+  readFavoritesComics,
 };
