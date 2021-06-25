@@ -1,5 +1,8 @@
 const {
-  favoritesCharactersServices: { addFavoritesCharacters }
+  favoritesCharactersServices: {
+    addFavoritesCharacters,
+    getFavoritesCharacters,
+  }
 } = require('../services');
 
 
@@ -20,6 +23,20 @@ const favoritesCharactersCreate = async (req, res) => {
   }
 };
 
+const favoritesCharactersReader = async (req, res) => {
+  try {
+    const { authorization } = req.headers;
+
+    const result = await getFavoritesCharacters(authorization);
+
+    return res.status(OK).json(result);
+  } catch (error) {
+    console.error(error);
+    return res.status(NOT_ALLOWED).json({ message: error.message });
+  }
+};
+
 module.exports = {
   favoritesCharactersCreate,
+  favoritesCharactersReader,
 };

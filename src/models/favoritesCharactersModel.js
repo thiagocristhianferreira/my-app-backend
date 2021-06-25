@@ -5,7 +5,7 @@ const NAME_COLLECTION = 'users';
 const writeFavoritesCharacters = async (email, favoritesCharactersArray) => {
   try {
     const db = await connection();
-    await db
+    return await db
       .collection(NAME_COLLECTION)
       .updateOne({ email }, { $set: { favoritesCharacters: favoritesCharactersArray } });
   } catch (error) {
@@ -14,6 +14,19 @@ const writeFavoritesCharacters = async (email, favoritesCharactersArray) => {
   }
 };
 
+const readFavoritesCharacters = async (email) => {
+  try {
+    const db = await connection();
+    return db
+      .collection(NAME_COLLECTION)
+      .findOne({ email });
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
 module.exports = {
   writeFavoritesCharacters,
+  readFavoritesCharacters,
 };
