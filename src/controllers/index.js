@@ -3,6 +3,7 @@ const joinController = require('./joinController');
 const verifyController = require('./verifyController');
 const favoritesCharactersControllers = require('./favoritesCharactersControllers');
 const favoritesComicsControllers = require('./favoritesComicsControllers');
+const userInfosController = require('./userInfosController');
 
 module.exports = {
   loginController,
@@ -10,4 +11,5 @@ module.exports = {
   verifyController,
   favoritesCharactersControllers,
   favoritesComicsControllers,
+  userInfosController,
 };

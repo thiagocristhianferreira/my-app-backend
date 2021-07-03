@@ -22,7 +22,7 @@ const getFavoritesComics = async (authorization) => {
 
   const { favoritesComics } = result;
 
-  return { favoritesComics };
+  return favoritesComics;
 };
 
 module.exports = {
